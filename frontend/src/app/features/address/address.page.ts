@@ -27,8 +27,8 @@ import { CartService } from '../../services/cart.service';
   template: `
     <div class="address-container">
       <div class="address-header">
-        <button mat-icon-button (click)="goBack()" class="back-btn">
-          <mat-icon>arrow_back</mat-icon>
+        <button mat-raised-button color="primary" (click)="goBack()" class="back-btn">
+          ← {{ 'COMMON.BACK' | translate }}
         </button>
         <h2>Endereço de Entrega</h2>
       </div>
@@ -121,8 +121,7 @@ import { CartService } from '../../services/cart.service';
               Voltar
             </button>
             <button mat-raised-button color="primary" type="submit" [disabled]="addressForm.invalid" class="continue-btn">
-              <mat-icon>arrow_forward</mat-icon>
-              Continuar para Pagamento
+              {{ 'ADDRESS.CONTINUE' | translate }} →
             </button>
           </div>
         </form>

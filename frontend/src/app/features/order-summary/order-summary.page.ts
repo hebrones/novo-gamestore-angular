@@ -25,23 +25,23 @@ import { environment } from '../../core/env';
   template: `
     <div class="order-summary-container">
       <div class="order-header">
-        <button mat-icon-button (click)="goBack()" class="back-btn">
-          <mat-icon>arrow_back</mat-icon>
+        <button mat-raised-button color="primary" (click)="goBack()" class="back-btn">
+          ← {{ 'COMMON.BACK' | translate }}
         </button>
-        <h2>Resumo do Pedido</h2>
+        <h2>{{ 'ORDER_SUMMARY.TITLE' | translate }}</h2>
       </div>
 
       <!-- Resumo dos Produtos -->
-      <div class="section products-section">
-        <h3><mat-icon>shopping_cart</mat-icon> Produtos</h3>
+      <div class="summary-section">
+        <h3>🛒 {{ 'ORDER_SUMMARY.PRODUCTS' | translate }}</h3>
         <div class="product-list">
           <div class="product-item" *ngFor="let item of orderService.order.items">
             <div class="product-info">
-              <img [src]="item.product.image" [alt]="item.product.title" class="product-image">
+              <img [src]="environment.apiBaseUrl + item.product.imageUrl" [alt]="item.product.title" class="product-image">
               <div class="product-details">
                 <h4>{{ item.product.title }}</h4>
                 <p class="product-price">{{ item.product.price | currency:'BRL':'symbol' }} cada</p>
-                <p class="product-quantity">Quantidade: {{ item.quantity }}</p>
+                <p class="product-quantity">{{ 'ORDER_SUMMARY.QUANTITY' | translate }}: {{ item.quantity }}</p>
               </div>
             </div>
             <div class="product-total">
@@ -52,84 +52,76 @@ import { environment } from '../../core/env';
         <mat-divider></mat-divider>
         <div class="total-section">
           <div class="total-row">
-            <span>Subtotal:</span>
+            <span>{{ 'ORDER_SUMMARY.SUBTOTAL' | translate }}:</span>
             <span>{{ orderService.order.total | currency:'BRL':'symbol' }}</span>
           </div>
           <div class="total-row">
-            <span>Frete:</span>
-            <span class="free-shipping">Grátis</span>
+            <span>{{ 'ORDER_SUMMARY.SHIPPING' | translate }}:</span>
+            <span class="free-shipping">{{ 'ORDER_SUMMARY.FREE_SHIPPING' | translate }}</span>
           </div>
           <div class="total-row final-total">
-            <strong>Total: {{ orderService.order.total | currency:'BRL':'symbol' }}</strong>
+            <strong>{{ 'ORDER_SUMMARY.TOTAL' | translate }}: {{ orderService.order.total | currency:'BRL':'symbol' }}</strong>
           </div>
         </div>
       </div>
 
       <!-- Endereço de Entrega -->
-      <div class="section address-section" *ngIf="orderService.order.address">
-        <h3><mat-icon>location_on</mat-icon> Endereço de Entrega</h3>
-        <div class="address-card">
-          <p><strong>{{ orderService.order.address.fullName }}</strong></p>
-          <p>{{ orderService.order.address.street }}, {{ orderService.order.address.number }}</p>
-          <p *ngIf="orderService.order.address.complement">{{ orderService.order.address.complement }}</p>
-          <p>{{ orderService.order.address.neighborhood }}</p>
-          <p>{{ orderService.order.address.city }}/{{ orderService.order.address.state }} - CEP: {{ orderService.order.address.zipCode }}</p>
-          <p><mat-icon class="phone-icon">phone</mat-icon> {{ orderService.order.address.phone }}</p>
+      <div class="section address-section">
+        <h3>📍 {{ 'ORDER_SUMMARY.DELIVERY_ADDRESS' | translate }}</h3>
+        <div class="address-info">
+          <p><strong>{{ orderService.order.address?.street }}, {{ orderService.order.address?.number }}</strong></p>
+          <p>{{ orderService.order.address?.neighborhood }}</p>
+          <p>{{ orderService.order.address?.city }} - {{ orderService.order.address?.state }}</p>
+          <p>CEP: {{ orderService.order.address?.zipCode }}</p>
         </div>
       </div>
 
-      <!-- Dados de Pagamento -->
-      <div class="section payment-section" *ngIf="orderService.order.payment">
-        <h3><mat-icon>payment</mat-icon> Forma de Pagamento</h3>
-        <div class="payment-card">
-          <div class="payment-method">
-            <mat-icon>credit_card</mat-icon>
-            <div class="payment-details">
-              <p><strong>Cartão de Crédito</strong></p>
-              <p>**** **** **** {{ getLastFourDigits(orderService.order.payment.cardNumber) }}</p>
-              <p>{{ orderService.order.payment.cardName }}</p>
-              <p>{{ getInstallmentText() }}</p>
-            </div>
-          </div>
+      <!-- Forma de Pagamento -->
+      <div class="section payment-section">
+        <h3>💳 {{ 'ORDER_SUMMARY.PAYMENT_METHOD' | translate }}</h3>
+        <div class="payment-info">
+          💳
+          <span>Cartão de Crédito</span>
+          <span *ngIf="orderService.order.payment?.cardNumber">
+            **** **** **** {{ orderService.order.payment.cardNumber.slice(-4) }}
+          </span>
         </div>
       </div>
 
-      <!-- Ações -->
-      <div class="actions-section">
+      <!-- Botão de Editar -->
+      <div class="edit-section">
         <button mat-stroked-button (click)="goBack()" class="edit-btn">
-          <mat-icon>edit</mat-icon>
-          Editar Pagamento
-        </button>
-        <button mat-raised-button color="primary" (click)="confirmOrder()" [disabled]="isProcessing" class="confirm-btn">
-          <mat-icon *ngIf="!isProcessing">check_circle</mat-icon>
-          <mat-icon *ngIf="isProcessing" class="loading-icon">hourglass_empty</mat-icon>
-          {{ isProcessing ? 'Processando...' : 'Confirmar Pedido' }}
+          ✏️ {{ 'ORDER_SUMMARY.EDIT_ORDER' | translate }}
         </button>
       </div>
 
       <!-- Informações Adicionais -->
       <div class="info-section">
         <div class="info-item">
-          <mat-icon>local_shipping</mat-icon>
-          <div>
-            <strong>Entrega Grátis</strong>
-            <p>Prazo de entrega: 5-7 dias úteis</p>
-          </div>
+          <span class="info-icon">🚚</span>
+          <span>{{ 'ORDER_SUMMARY.DELIVERY_TIME' | translate }}</span>
         </div>
         <div class="info-item">
-          <mat-icon>security</mat-icon>
-          <div>
-            <strong>Compra Segura</strong>
-            <p>Seus dados estão protegidos</p>
-          </div>
+          <span class="info-icon">🔒</span>
+          <span>{{ 'ORDER_SUMMARY.SECURE_PURCHASE' | translate }}</span>
         </div>
         <div class="info-item">
-          <mat-icon>assignment_return</mat-icon>
-          <div>
-            <strong>Troca e Devolução</strong>
-            <p>30 dias para trocar ou devolver</p>
-          </div>
+          <span class="info-icon">📋</span>
+          <span>{{ 'ORDER_SUMMARY.RETURN_POLICY' | translate }}</span>
         </div>
+      </div>
+
+      <!-- Botão de Finalizar Pedido -->
+      <div class="finalize-section">
+        <button 
+          mat-raised-button 
+          color="primary" 
+          class="finalize-btn"
+          (click)="confirmOrder()"
+          [disabled]="isProcessing">
+          <span *ngIf="!isProcessing">{{ 'ORDER_SUMMARY.FINALIZE_ORDER' | translate }}</span>
+          <span *ngIf="isProcessing">{{ 'ORDER_SUMMARY.PROCESSING' | translate }}...</span>
+        </button>
       </div>
     </div>
   `,
@@ -371,6 +363,41 @@ import { environment } from '../../core/env';
       color: rgba(255, 255, 255, 0.7);
     }
 
+    .finalize-section {
+      margin-top: 32px;
+      text-align: center;
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .finalize-btn {
+      font-size: 18px;
+      font-weight: 600;
+      padding: 16px 48px;
+      border-radius: 12px;
+      background: linear-gradient(45deg, #4CAF50, #45a049);
+      color: white;
+      box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .finalize-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(76, 175, 80, 0.4);
+      background: linear-gradient(45deg, #45a049, #4CAF50);
+    }
+
+    .finalize-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .order-summary-container {
@@ -410,6 +437,7 @@ export class OrderSummaryPage {
   private http = inject(HttpClient);
   private cart = inject(CartService);
   orderService = inject(OrderService);
+  environment = environment;
 
   isProcessing = false;
 

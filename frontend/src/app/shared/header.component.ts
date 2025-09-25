@@ -25,49 +25,36 @@ import { CartService } from '../services/cart.service';
       <!-- Navigation Section -->
       <nav class="nav-section">
         <a routerLink="/catalog" class="nav-link">
-          <mat-icon>store</mat-icon>
           <span>{{ 'HEADER.CATALOG' | translate }}</span>
         </a>
-        <a routerLink="/cart" *ngIf="auth.isLoggedIn()" 
-           class="nav-link cart-link"
-           [matBadge]="getCartItemCount()" 
-           matBadgeOverlap="false"
-           matBadgeColor="accent">
-          <mat-icon>shopping_cart</mat-icon>
-          <span>{{ 'HEADER.CART' | translate }}</span>
+        <a routerLink="/cart" class="nav-link">
+          <span>{{ 'HEADER.CART' | translate }} ({{ getCartItemCount() }})</span>
         </a>
-        <a routerLink="/checkout" *ngIf="auth.isLoggedIn()" class="nav-link">
-          <mat-icon>payment</mat-icon>
+        <a routerLink="/order-summary" class="nav-link" *ngIf="getCartItemCount() > 0">
           <span>{{ 'HEADER.CHECKOUT' | translate }}</span>
         </a>
-        <a routerLink="/admin/products/new" *ngIf="auth.isAdmin()" class="nav-link admin-link">
-          <mat-icon>admin_panel_settings</mat-icon>
+        <a routerLink="/admin" class="nav-link" *ngIf="auth.isAdmin()">
           <span>{{ 'HEADER.ADMIN' | translate }}</span>
         </a>
       </nav>
 
       <!-- Actions Section -->
       <div class="actions-section">
-        <button mat-icon-button class="action-btn lang-btn" (click)="toggleLang()">
-          <mat-icon>translate</mat-icon>
-          <span class="lang-text">{{ currentLang.toUpperCase() }}</span>
+        <button mat-stroked-button class="language-btn" (click)="toggleLang()">
+          <span>{{ currentLang === 'pt' ? 'PT' : 'EN' }}</span>
         </button>
-        
-        <div class="auth-buttons" *ngIf="!auth.isLoggedIn()">
-          <button mat-raised-button color="primary" routerLink="/login" class="login-btn">
-            <mat-icon>login</mat-icon>
-            {{ 'HEADER.LOGIN' | translate }}
-          </button>
-          <button mat-stroked-button routerLink="/register" class="register-btn">
-            <mat-icon>person_add</mat-icon>
-            Cadastrar
-          </button>
-        </div>
-        
-        <button mat-raised-button color="warn" *ngIf="auth.isLoggedIn()" 
-                (click)="auth.logout()" class="logout-btn">
-          <mat-icon>logout</mat-icon>
-          {{ 'HEADER.LOGOUT' | translate }}
+        <button mat-raised-button color="primary" routerLink="/login" class="login-btn">
+          <span>{{ 'HEADER.LOGIN' | translate }}</span>
+        </button>
+        <button mat-raised-button routerLink="/register" class="register-btn">
+          <span>{{ 'HEADER.REGISTER' | translate }}</span>
+        </button>
+      </div>
+      <div class="auth-section" *ngIf="auth.isLoggedIn()">
+        <span class="user-name">{{ auth.user()?.name }}</span>
+        <button mat-raised-button color="warn" *ngIf="auth.isLoggedIn()"
+                (click)="logout()" class="logout-btn">
+          <span>{{ 'HEADER.LOGOUT' | translate }}</span>
         </button>
       </div>
     </div>
@@ -75,7 +62,7 @@ import { CartService } from '../services/cart.service';
   `,
   styles: [`
     .modern-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
       position: sticky;
       top: 0;
@@ -88,9 +75,13 @@ import { CartService } from '../services/cart.service';
       align-items: center;
       justify-content: space-between;
       padding: 12px 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-      gap: 24px;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      gap: 20px;
+      position: relative;
+      overflow: hidden;
     }
 
     .logo-section .logo {
@@ -322,11 +313,28 @@ import { CartService } from '../services/cart.service';
       gap: 8px;
     }
 
-    .login-btn, .register-btn, .logout-btn {
+    .login-btn, .register-btn, .logout-btn, .language-btn {
       border-radius: 20px;
       font-weight: 600;
       text-transform: none;
       padding: 8px 20px;
+    }
+
+    .language-btn {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-right: 12px;
+    }
+
+    .language-btn:hover {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .login-btn {

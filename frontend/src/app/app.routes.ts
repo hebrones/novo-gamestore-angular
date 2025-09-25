@@ -5,7 +5,7 @@ import { AdminGuard } from './core/admin.guard';
 export const appRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'catalog', loadComponent: () => import('./features/catalog/catalog.page').then(m => m.CatalogPage) },
-  { path: 'product/:id', loadComponent: () => import('./features/product-detail/product-detail.page').then(m => m.ProductDetailPage) },
+  { path: 'product/:id', loadComponent: () => import('./features/product/product-detail.page').then(m => m.ProductDetailPage) },
   { path: 'cart', canActivate: [AuthGuard], loadComponent: () => import('./features/cart/cart.page').then(m => m.CartPage) },
   { path: 'address', canActivate: [AuthGuard], loadComponent: () => import('./features/address/address.page').then(m => m.AddressPage) },
   { path: 'payment', canActivate: [AuthGuard], loadComponent: () => import('./features/payment/payment.page').then(m => m.PaymentPage) },

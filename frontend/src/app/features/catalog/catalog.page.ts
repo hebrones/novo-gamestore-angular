@@ -42,10 +42,10 @@ import { ConfirmDialog } from '../../shared/confirm.dialog';
           <strong>{{ p.price | currency:'BRL':'symbol' }}</strong>
           <div style="display:flex; gap:8px; margin-top:8px;">
             <button mat-raised-button color="primary" (click)="addToCart(p)">
-              <mat-icon>add_shopping_cart</mat-icon> {{ 'CATALOG.ADD' | translate }}
+              🛒 {{ 'CATALOG.ADD' | translate }}
             </button>
             <button mat-stroked-button color="accent" *ngIf="isAdmin()" [routerLink]="['/admin/products', p.id, 'edit']">
-              <mat-icon>edit</mat-icon> {{ 'CATALOG.EDIT' | translate }}
+              ✏️ {{ 'CATALOG.EDIT' | translate }}
             </button>
             <button mat-stroked-button color="warn" *ngIf="isAdmin()" (click)="remove(p)">
               X {{ 'CATALOG.DELETE' | translate }}

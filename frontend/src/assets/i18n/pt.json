@@ -2,11 +2,11 @@
   "HEADER": {
     "CATALOG": "Catálogo",
     "CART": "Carrinho",
-    "CHECKOUT": "Checkout",
-    "ADMIN": "Admin",
+    "CHECKOUT": "Finalizar Compra",
+    "ADMIN": "Administração",
     "LOGIN": "Entrar",
     "LOGOUT": "Sair",
-    "LANG": "Idioma"
+    "REGISTER": "Cadastro"
   },
   "CATALOG": {
     "TITLE": "Catálogo de Jogos",
@@ -14,6 +14,10 @@
     "EDIT": "Editar",
     "DELETE": "Remover",
     "CREATED_AT": "Criado em"
+  },
+  "DETAIL": {
+    "BACK": "Voltar",
+    "STOCK": "Estoque"
   },
   "CART": {
     "TITLE": "Seu Carrinho",
@@ -50,5 +54,28 @@
     "PAY": "Pagar",
     "SUCCESS": "Compra concluída!",
     "ERROR": "Erro ao processar"
+  },
+  "ORDER_SUMMARY": {
+    "TITLE": "Resumo do Pedido",
+    "PRODUCTS": "Produtos",
+    "QUANTITY": "Quantidade",
+    "SUBTOTAL": "Subtotal",
+    "SHIPPING": "Frete",
+    "FREE_SHIPPING": "Grátis",
+    "TOTAL": "Total",
+    "DELIVERY_ADDRESS": "Endereço de Entrega",
+    "PAYMENT_METHOD": "Forma de Pagamento",
+    "EDIT_ORDER": "Editar Pedido",
+    "DELIVERY_TIME": "Entrega em até 5 dias úteis",
+    "SECURE_PURCHASE": "Compra 100% segura",
+    "RETURN_POLICY": "Política de devolução em 30 dias",
+    "FINALIZE_ORDER": "Finalizar Pedido",
+    "PROCESSING": "Processando"
+  },
+  "ADDRESS": {
+    "CONTINUE": "Continue"
+  },
+  "COMMON": {
+    "BACK": "Voltar"
   }
 }

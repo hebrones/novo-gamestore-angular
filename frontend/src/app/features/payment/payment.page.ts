@@ -28,8 +28,8 @@ import { OrderService, PaymentData } from '../../services/order.service';
   template: `
     <div class="payment-container">
       <div class="payment-header">
-        <button mat-icon-button (click)="goBack()" class="back-btn">
-          <mat-icon>arrow_back</mat-icon>
+        <button mat-raised-button color="primary" (click)="goBack()" class="back-btn">
+          ← {{ 'COMMON.BACK' | translate }}
         </button>
         <h2>Pagamento</h2>
       </div>
@@ -49,7 +49,7 @@ import { OrderService, PaymentData } from '../../services/order.service';
 
       <!-- Formulário de Pagamento -->
       <div class="payment-form">
-        <h3>Dados do Cartão de Crédito</h3>
+        <h3>💳 Cartão de Crédito</h3>
         <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
           <div class="form-row">
             <mat-form-field appearance="outline" class="full-width">

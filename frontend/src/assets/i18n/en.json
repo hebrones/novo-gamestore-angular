@@ -3,10 +3,10 @@
     "CATALOG": "Catalog",
     "CART": "Cart",
     "CHECKOUT": "Checkout",
-    "ADMIN": "Admin",
+    "ADMIN": "Administration",
     "LOGIN": "Login",
-    "LOGOUT": "Logout",
-    "LANG": "Language"
+    "REGISTER": "Register",
+    "LOGOUT": "Logout"
   },
   "CATALOG": {
     "TITLE": "Game Catalog",
@@ -14,6 +14,10 @@
     "EDIT": "Edit",
     "DELETE": "Delete",
     "CREATED_AT": "Created at"
+  },
+  "DETAIL": {
+    "BACK": "Back",
+    "STOCK": "Stock"
   },
   "CART": {
     "TITLE": "Your Cart",
@@ -50,5 +54,28 @@
     "PAY": "Pay",
     "SUCCESS": "Purchase completed!",
     "ERROR": "Processing error"
+  },
+  "ORDER_SUMMARY": {
+    "TITLE": "Order Summary",
+    "PRODUCTS": "Products",
+    "QUANTITY": "Quantity",
+    "SUBTOTAL": "Subtotal",
+    "SHIPPING": "Shipping",
+    "FREE_SHIPPING": "Free",
+    "TOTAL": "Total",
+    "DELIVERY_ADDRESS": "Delivery Address",
+    "PAYMENT_METHOD": "Payment Method",
+    "EDIT_ORDER": "Edit Order",
+    "DELIVERY_TIME": "Delivery within 5 business days",
+    "SECURE_PURCHASE": "100% secure purchase",
+    "RETURN_POLICY": "30-day return policy",
+    "FINALIZE_ORDER": "Finalize Order",
+    "PROCESSING": "Processing"
+  },
+  "ADDRESS": {
+    "CONTINUE": "Continue"
+  },
+  "COMMON": {
+    "BACK": "Back"
   }
 }
