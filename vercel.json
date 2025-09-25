@@ -1,15 +1,14 @@
 {
   "version": 2,
   "name": "novo-gamestore-angular",
-  "builds": [
-    {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "frontend/dist/app"
-      }
+  "buildCommand": "npm run build",
+  "outputDirectory": "frontend/dist/app",
+  "installCommand": "npm run install:all",
+  "functions": {
+    "api/index.js": {
+      "runtime": "nodejs18.x"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/api/(.*)",
@@ -17,22 +16,11 @@
     },
     {
       "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|json))",
-      "dest": "/frontend/dist/app/$1"
+      "dest": "/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/frontend/dist/app/index.html"
-    }
-  ],
-  "functions": {
-    "api/index.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "rewrites": [
-    {
-      "source": "/((?!api).*)",
-      "destination": "/index.html"
+      "dest": "/index.html"
     }
   ]
 }
