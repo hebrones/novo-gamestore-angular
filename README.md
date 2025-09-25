@@ -1,82 +1,182 @@
-# Game Store - Angular Monorepo
+# 🎮 Novo GameStore Angular
 
-Uma aplicação completa de e-commerce para jogos desenvolvida com Angular e Node.js.
+E-commerce completo de jogos desenvolvido com Angular 18 e Node.js, otimizado para deploy no Vercel.
 
-## Configuração da API
+## 📋 Sobre o Projeto
 
+O **Novo GameStore Angular** é uma aplicação de e-commerce moderna e responsiva para venda de jogos digitais. O projeto utiliza uma arquitetura de monorepo com frontend Angular e backend Node.js, totalmente configurado para deploy na plataforma Vercel.
+
+## ✨ Funcionalidades
+
+### Frontend (Angular 18)
+- 🏠 **Página Inicial** - Showcase dos jogos em destaque
+- 🎯 **Catálogo de Produtos** - Listagem completa de jogos
+- 🔍 **Detalhes do Produto** - Informações detalhadas de cada jogo
+- 🛒 **Carrinho de Compras** - Gerenciamento de itens
+- 📋 **Resumo do Pedido** - Finalização de compras
+- 🌐 **Internacionalização** - Suporte a múltiplos idiomas (PT/EN)
+- 📱 **Design Responsivo** - Otimizado para todos os dispositivos
+
+### Backend (Node.js + Express)
+- 🔐 **Autenticação JWT** - Sistema de login seguro
+- 📊 **API RESTful** - Endpoints para produtos e pedidos
+- 🗄️ **Prisma ORM** - Gerenciamento de banco de dados
+- 📁 **Upload de Arquivos** - Gerenciamento de imagens
+- 🔒 **Middleware de Segurança** - Proteção de rotas
+
+## 🛠️ Tecnologias Utilizadas
+
+### Frontend
+- **Angular 18** - Framework principal
+- **Angular Material** - Componentes UI
+- **ngx-translate** - Internacionalização
+- **RxJS** - Programação reativa
+- **TypeScript** - Linguagem de programação
+
+### Backend
+- **Node.js** - Runtime JavaScript
+- **Express.js** - Framework web
+- **Prisma** - ORM para banco de dados
+- **JWT** - Autenticação
+- **bcryptjs** - Criptografia de senhas
+- **Multer** - Upload de arquivos
+
+### Deploy e DevOps
+- **Vercel** - Plataforma de deploy
+- **Git** - Controle de versão
+- **npm** - Gerenciador de pacotes
+
+## 📁 Estrutura do Projeto
+
+```
+novo-gamestore-angular/
+├── 📁 frontend/          # Aplicação Angular
+│   ├── 📁 src/
+│   │   ├── 📁 app/       # Componentes e páginas
+│   │   ├── 📁 assets/    # Recursos estáticos
+│   │   └── 📄 index.html
+│   ├── 📄 angular.json
+│   └── 📄 package.json
+├── 📁 api/              # Backend Node.js
+│   ├── 📁 src/          # Código fonte da API
+│   ├── 📁 prisma/       # Schema e migrações
+│   ├── 📄 index.js      # Serverless function
+│   └── 📄 package.json
+├── 📄 vercel.json       # Configuração do Vercel
+├── 📄 .vercelignore     # Arquivos ignorados no deploy
+├── 📄 package.json      # Scripts do monorepo
+└── 📄 README.md
+```
+
+## 🚀 Instalação e Execução
+
+### Pré-requisitos
+- Node.js 18+ 
+- npm ou yarn
+- Git
+
+### 1. Clone o repositório
 ```bash
-cd api
-cp .env.example .env
-npm install
-npm run prisma:migrate
-npm run prisma:seed
-npm run dev  # Servidor rodará em http://localhost:3333
+git clone https://github.com/hebrones/novo-gamestore-angular.git
+cd novo-gamestore-angular
 ```
 
-### Credenciais de Teste
-- Administrador: `admin@local.com` / `Admin@123`
-- Usuário: `user@local.com` / `User@123`
-
-## Configuração do Frontend
-
+### 2. Instale as dependências
 ```bash
-cd frontend
-npm install
-npm start  # Aplicação rodará em http://localhost:4200
+# Instalar dependências de todo o projeto
+npm run install:all
 ```
 
-## Funcionalidades
-
-### Catálogo de Produtos
-- Exibição de jogos com imagem, título, preço e descrição
-- Carregamento otimizado com lazy loading
-- Filtros e busca por produtos
-
-### Sistema de Autenticação
-- Login e cadastro de usuários
-- Controle de acesso baseado em roles (Admin/User)
-- Proteção de rotas com guards
-- Interceptor para autenticação JWT
-
-### Gerenciamento de Produtos (Admin)
-- Adicionar novos produtos
-- Editar produtos existentes
-- Remover produtos com confirmação
-- Upload de imagens com preview
-
-### Carrinho de Compras
-- Adicionar/remover itens do carrinho
-- Persistência no localStorage
-- Processo de checkout completo
-- Controle de estoque automático
-
-### Internacionalização
-- Suporte para Português e Inglês
-- Alternância de idioma no header
-- Configurações persistidas
-
-### API Backend
-- RESTful API com Express.js
-- Banco de dados SQLite com Prisma ORM
-- Upload de arquivos com Multer
-- Validação e tratamento de erros
-
-## Tecnologias Utilizadas
-
-- **Frontend**: Angular, TypeScript, Angular Material
-- **Backend**: Node.js, Express.js, Prisma, SQLite
-- **Autenticação**: JWT
-- **Upload**: Multer
-- **Estilização**: CSS3, Angular Material
-
-## Estrutura do Projeto
-
+### 3. Configuração do ambiente
+```bash
+# Configure as variáveis de ambiente na pasta api
+cp api/.env.example api/.env
 ```
-gamestore-angular-monorepo/
-├── api/                 # Backend Node.js
-│   ├── src/            # Código fonte da API
-│   ├── prisma/         # Schema e migrações do banco
-│   └── uploads/        # Imagens dos produtos
-└── frontend/           # Frontend Angular
-    └── src/           # Código fonte da aplicação
+
+### 4. Execute o projeto
+
+#### Desenvolvimento (Frontend + API)
+```bash
+npm run dev
 ```
+
+#### Apenas Frontend
+```bash
+npm run dev:frontend
+# ou
+cd frontend && npm start
+```
+
+#### Apenas API
+```bash
+npm run dev:api
+# ou
+cd api && npm run dev
+```
+
+## 🌐 Deploy no Vercel
+
+O projeto está totalmente configurado para deploy automático no Vercel:
+
+### 1. Conecte o repositório
+- Acesse [vercel.com](https://vercel.com)
+- Importe o repositório `novo-gamestore-angular`
+
+### 2. Configurações automáticas
+O Vercel detectará automaticamente:
+- ✅ Framework: Angular
+- ✅ Build Command: `npm run build`
+- ✅ Output Directory: `frontend/dist/app`
+- ✅ API Routes: `/api/*`
+
+### 3. Variáveis de ambiente
+Configure no painel do Vercel:
+```
+DATABASE_URL=sua_url_do_banco
+JWT_SECRET=seu_jwt_secret
+```
+
+## 📱 Funcionalidades Implementadas
+
+### ✅ Concluídas
+- [x] Estrutura base do projeto
+- [x] Componentes de UI responsivos
+- [x] Sistema de roteamento
+- [x] Carrinho de compras funcional
+- [x] Internacionalização (PT/EN)
+- [x] Integração com API
+- [x] Configuração do Vercel
+- [x] Botão "Finalizar Pedido"
+
+### 🔄 Em Desenvolvimento
+- [ ] Sistema de autenticação completo
+- [ ] Integração com gateway de pagamento
+- [ ] Painel administrativo
+- [ ] Sistema de avaliações
+
+## 🎨 Design e UX
+
+- **Design Moderno**: Interface limpa e intuitiva
+- **Responsividade**: Funciona perfeitamente em desktop, tablet e mobile
+- **Acessibilidade**: Seguindo as melhores práticas de UX
+- **Performance**: Otimizado para carregamento rápido
+
+## 🌍 Internacionalização
+
+Suporte completo a múltiplos idiomas:
+- 🇧🇷 **Português** - Idioma padrão
+- 🇺🇸 **English** - Tradução completa
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 👨‍💻 Autor
+
+**hebrones**
+- GitHub: [@hebrones](https://github.com/hebrones)
+- Repositório: [novo-gamestore-angular](https://github.com/hebrones/novo-gamestore-angular)
+
+---
+
+⭐ **Se este projeto foi útil para você, considere dar uma estrela no repositório!**
