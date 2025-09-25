@@ -1,0 +1,54 @@
+{
+  "HEADER": {
+    "CATALOG": "Catalog",
+    "CART": "Cart",
+    "CHECKOUT": "Checkout",
+    "ADMIN": "Admin",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "LANG": "Language"
+  },
+  "CATALOG": {
+    "TITLE": "Game Catalog",
+    "ADD": "Add",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "CREATED_AT": "Created at"
+  },
+  "CART": {
+    "TITLE": "Your Cart",
+    "CHECKOUT": "Checkout",
+    "TOTAL": "Total"
+  },
+  "LOGIN": {
+    "TITLE": "Login"
+  },
+  "REGISTER": {
+    "TITLE": "Register"
+  },
+  "FORM": {
+    "NAME": "Name",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "PRICE": "Price",
+    "STOCK": "Stock",
+    "DESCRIPTION": "Description",
+    "IMAGE": "Image",
+    "SAVE": "Save",
+    "CREATE": "Create",
+    "UPDATE": "Update"
+  },
+  "CONFIRM": {
+    "DELETE": "Are you sure to delete?"
+  },
+  "CHECKOUT": {
+    "TITLE": "Checkout",
+    "NAME": "Name on card",
+    "CARD": "Card number",
+    "EXP": "Expiry",
+    "CVV": "CVV",
+    "PAY": "Pay",
+    "SUCCESS": "Purchase completed!",
+    "ERROR": "Processing error"
+  }
+}

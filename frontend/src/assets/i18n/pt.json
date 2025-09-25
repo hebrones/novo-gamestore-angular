@@ -1,0 +1,54 @@
+{
+  "HEADER": {
+    "CATALOG": "Catálogo",
+    "CART": "Carrinho",
+    "CHECKOUT": "Checkout",
+    "ADMIN": "Admin",
+    "LOGIN": "Entrar",
+    "LOGOUT": "Sair",
+    "LANG": "Idioma"
+  },
+  "CATALOG": {
+    "TITLE": "Catálogo de Jogos",
+    "ADD": "Adicionar",
+    "EDIT": "Editar",
+    "DELETE": "Remover",
+    "CREATED_AT": "Criado em"
+  },
+  "CART": {
+    "TITLE": "Seu Carrinho",
+    "CHECKOUT": "Concluir compra",
+    "TOTAL": "Total"
+  },
+  "LOGIN": {
+    "TITLE": "Login"
+  },
+  "REGISTER": {
+    "TITLE": "Cadastro"
+  },
+  "FORM": {
+    "NAME": "Nome",
+    "EMAIL": "Email",
+    "PASSWORD": "Senha",
+    "PRICE": "Preço",
+    "STOCK": "Estoque",
+    "DESCRIPTION": "Descrição",
+    "IMAGE": "Imagem",
+    "SAVE": "Salvar",
+    "CREATE": "Criar",
+    "UPDATE": "Atualizar"
+  },
+  "CONFIRM": {
+    "DELETE": "Tem certeza que deseja remover?"
+  },
+  "CHECKOUT": {
+    "TITLE": "Checkout",
+    "NAME": "Nome no cartão",
+    "CARD": "Número do cartão",
+    "EXP": "Validade",
+    "CVV": "CVV",
+    "PAY": "Pagar",
+    "SUCCESS": "Compra concluída!",
+    "ERROR": "Erro ao processar"
+  }
+}
