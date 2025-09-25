@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Development files
+*.log
+*.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build artifacts
+dist/
+build/
+.next/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# API specific
+api/src/
+api/tsconfig.json
+api/prisma/migrations/
+api/uploads/
+
+# Frontend specific
+frontend/src/
+frontend/angular.json
+frontend/tsconfig*.json
+
+# Documentation
+README.md
+*.md
+
+# Seed images
+api/seed_images/
