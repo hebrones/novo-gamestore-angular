@@ -94,17 +94,78 @@ npm run dev:api
 cd api && npm run dev
 ```
 
-## 🌐 Deploy no Vercel
+## 🚀 Deploy
 
+Este projeto está configurado para deploy em duas plataformas:
+- **Frontend**: Vercel (Angular)
+- **Backend**: Render (Node.js/Express/Prisma)
 
+### 📦 Backend (Render)
 
-### 2. Configurações automáticas
-O Vercel detectará automaticamente:
--  Framework: Angular
--  Build Command: `npm run build`
--  Output Directory: `frontend/dist/app`
--  API Routes: `/api/*`
+1. **Conectar repositório na Render**
+   - Acesse [render.com](https://render.com)
+   - Conecte seu repositório GitHub
+   - Selecione "Blueprint" para usar o arquivo `render.yaml`
 
+2. **Configurar variáveis de ambiente**
+   - Após o primeiro deploy, acesse o painel da Render
+   - Configure `FRONT_ORIGIN` com o domínio do Vercel (ex: `https://seu-site.vercel.app`)
+   - As outras variáveis são configuradas automaticamente pelo `render.yaml`
+
+3. **Verificar deploy**
+   - Aguarde o deploy completar
+   - Anote a URL pública (ex: `https://gamestore-api.onrender.com`)
+   - O comando `npm run prisma:seed` roda automaticamente após o deploy
+
+### 🌐 Frontend (Vercel)
+
+1. **Configurar projeto no Vercel**
+   - Acesse [vercel.com](https://vercel.com)
+   - Importe seu repositório GitHub
+   - Configure:
+     - **Root Directory**: `.` (raiz do repositório)
+     - **Install Command**: `npm run install:all`
+     - **Build Command**: `npm run build:front`
+     - **Output Directory**: `frontend/dist/app`
+
+2. **Atualizar URL da API**
+   - Após o deploy da API na Render, edite `frontend/src/app/core/env.ts`
+   - Substitua `https://SEU-SERVICE.onrender.com` pela URL real da API
+   - Faça commit e push para redeploy automático
+
+### 🔧 Smoke Tests
+
+Após os deploys, teste os endpoints principais:
+
+#### API (Render)
+```bash
+# Health check
+GET https://sua-api.onrender.com/health
+# Resposta esperada: { "ok": true }
+
+# Lista de produtos
+GET https://sua-api.onrender.com/products
+# Resposta esperada: Array com 10 jogos
+```
+
+#### Frontend (Vercel)
+- Acesse sua aplicação no Vercel
+- Verifique se a página inicial carrega
+- Teste se os produtos são listados corretamente
+- Confirme que as imagens dos jogos aparecem
+
+### 📝 Variáveis de Ambiente
+
+#### API (.env)
+```env
+DATABASE_URL="file:./dev.db"
+PORT=3333
+JWT_SECRET="troque_isso"
+FRONT_ORIGIN="https://seu-site.vercel.app"
+```
+
+#### Frontend
+A URL da API é configurada em `frontend/src/app/core/env.ts`
 
 ## 👨‍💻 Autor
 
