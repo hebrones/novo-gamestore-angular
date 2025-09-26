@@ -10,7 +10,10 @@ import productRoutes from './routes/products';
 import checkoutRoutes from './routes/checkout';
 
 const app = express();
-app.use(cors({ origin: 'http://localhost:4200' }));
+const allowed = (process.env.FRONT_ORIGIN || 'http://localhost:4200')
+  .split(',')
+  .map(s => s.trim());
+app.use(cors({ origin: allowed }));
 app.use(express.json());
 
 const __filename = fileURLToPath(import.meta.url);
