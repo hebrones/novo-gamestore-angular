@@ -1,10 +1,9 @@
 {
   "version": 2,
   "name": "novo-gamestore-angular",
-  "buildCommand": "npm run vercel-build",
-  "outputDirectory": "dist/app",
-  "installCommand": "npm install",
-  "rootDirectory": "frontend",
+  "buildCommand": "npm run build:frontend",
+  "outputDirectory": "frontend/dist/app",
+  "installCommand": "npm run install:all",
   "functions": {
     "api/index.js": {
       "runtime": "@vercel/node@3.0.7"
