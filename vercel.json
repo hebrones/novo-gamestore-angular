@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "novo-gamestore-angular",
-  "buildCommand": "npm run build",
+  "buildCommand": "cd frontend && npm run build",
   "outputDirectory": "frontend/dist/app",
   "installCommand": "npm run install:all",
   "functions": {
