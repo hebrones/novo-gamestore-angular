@@ -154,6 +154,23 @@ GET https://sua-api.onrender.com/products
 - Teste se os produtos são listados corretamente
 - Confirme que as imagens dos jogos aparecem
 
+## ⚙️ Configuração do Projeto no Vercel
+
+**IMPORTANTE**: No painel do Vercel, configure:
+
+### Project Settings → General
+- **Root Directory**: `frontend`
+
+### Build & Output Settings
+- **Install Command**: (deixar vazio)
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist/app`
+
+Essas configurações são necessárias porque:
+- O projeto Angular está na pasta `frontend/`
+- O build gera arquivos em `frontend/dist/app/`
+- O `frontend/vercel.json` configura o SPA fallback
+
 ### 📝 Variáveis de Ambiente
 
 #### API (.env)
