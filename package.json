@@ -4,12 +4,8 @@
   "description": "GameStore - E-commerce completo com Angular e Node.js",
   "main": "index.js",
   "scripts": {
-    "build": "cd frontend && npm run build && cd ../api && npm run build",
-    "build:frontend": "cd frontend && npm run build",
-    "build:api": "cd api && npm run build",
-    "start": "cd api && npm start",
-    "dev": "concurrently \"cd frontend && npm start\" \"cd api && npm run dev\"",
-    "install:all": "npm install && cd frontend && npm install && cd ../api && npm install"
+    "install:all": "cd frontend && npm i",
+    "build:front": "cd frontend && npm run build"
   },
   "keywords": ["gamestore", "angular", "nodejs", "ecommerce"],
   "author": "hebrones",

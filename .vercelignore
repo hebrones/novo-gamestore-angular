@@ -29,20 +29,5 @@ Thumbs.db
 .git/
 .gitignore
 
-# API specific
-api/src/
-api/tsconfig.json
-api/prisma/migrations/
-api/uploads/
-
-# Frontend specific
-frontend/src/
-frontend/angular.json
-frontend/tsconfig*.json
-
-# Documentation
-README.md
-*.md
-
-# Seed images
-api/seed_images/
+# API folder (not needed for frontend deployment)
+api/**
